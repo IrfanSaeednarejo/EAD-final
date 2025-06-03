@@ -4,10 +4,23 @@ import './App.css'
 
 
 function TrafficLightSimulator() {
-  const [color, setColor] = useState("red")
+  const [color, setColor] = useState("green");
 
 
-  //Initial commit: add static HTML and CSS for traffic Lights
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setColor((prevColor) => {
+
+        if (prevColor === "red") return "yellow";
+        if (prevColor === "green") return "red";
+        return "green";
+      });
+    }, 3000); 
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }
+  , [color]);
   
   return (
     <>
@@ -18,9 +31,10 @@ function TrafficLightSimulator() {
           <div className=" items-center justify-center w-screen h-screen bg-gray-800 text-white">
             <h1 className="text-4xl font-bold text-center">Traffic Light Simulator</h1>
            <div className="flex  flex-col items-center w-1/4 justify-center space-y-4 bg-gray-700 p-8 rounded-lg shadow-lg mt-8">
-            <div className={`bg-${color}-500 w-16 h-16 rounded-full transition-colors duration-500`}></div>
-            <div className={`bg-${color}-500 w-16 h-16 rounded-full transition-colors duration-500`}></div>
-            <div className={`bg-${color}-500 w-16 h-16 rounded-full transition-colors duration-500`}></div>
+            <div className={`bg-${color === "red" ? "red" : "gray"}-500 w-16 h-16 rounded-full transition-colors duration-500`}></div>
+            <div className={`bg-${color === "yellow" ? "yellow" : "gray"}-500 w-16 h-16 rounded-full transition-colors duration-500`}></div>
+            <div className={`bg-${color === "green" ? "green" : "gray"}-500 w-16 h-16 rounded-full transition-colors duration-500`}></div>
+
            </div>
             
            </div>
