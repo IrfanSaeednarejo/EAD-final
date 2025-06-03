@@ -21,7 +21,7 @@ function TrafficLightSimulator() {
       <div className="flex flex-col items-center justify-center w-screen h-screen bg-gray-800 text-white">
         <h1 className="text-4xl font-bold text-center mb-8">Traffic Light Simulator</h1>
 
-        <div className="flex flex-col items-center justify-center w-1/4 space-y-4 bg-gray-700 p-8 rounded-lg shadow-lg">
+        <div className="flex flex-col items-center justify-center w-1/9 space-y-4 bg-gray-700 p-8 rounded-lg shadow-lg">
           <div className={`w-16 h-16 rounded-full transition-all duration-500 
           ${
             color === "red" 
